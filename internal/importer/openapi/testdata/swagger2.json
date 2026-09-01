@@ -1,0 +1,18 @@
+{
+  "swagger": "2.0",
+  "info": { "title": "Legacy API", "version": "1.0" },
+  "host": "legacy.example.com",
+  "basePath": "/v2",
+  "schemes": ["https"],
+  "paths": {
+    "/things": {
+      "get": {
+        "operationId": "listThings",
+        "parameters": [
+          { "name": "q", "in": "query", "type": "string" }
+        ],
+        "responses": { "200": { "description": "ok" } }
+      }
+    }
+  }
+}

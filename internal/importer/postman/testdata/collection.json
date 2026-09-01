@@ -1,0 +1,68 @@
+{
+  "info": {
+    "name": "My Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+  },
+  "variable": [{ "key": "baseUrl", "value": "https://api.example.com" }],
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "list users",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/v1/users?limit=10&debug=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "users"],
+              "query": [
+                { "key": "limit", "value": "10" },
+                { "key": "debug", "value": "1", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "create user",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                { "key": "key", "value": "X-Api-Key", "type": "string" },
+                { "key": "value", "value": "{{apiKey}}", "type": "string" },
+                { "key": "in", "value": "header", "type": "string" }
+              ]
+            },
+            "url": "{{baseUrl}}/v1/users",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"Ada\"}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/v1/login",
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "username", "value": "ada" },
+            { "key": "password", "value": "{{password}}" }
+          ]
+        }
+      }
+    }
+  ]
+}
